@@ -24,16 +24,23 @@ else if (
     playerSelection.toLowerCase()==='scissors' && computerSelection==='paper'
 )
 {return 'you win!'}
-else {return 'uh oh'}
-}//play 5 rounds and display results after each round no workie i bad
-function game(){
+else {return 'typo'}
+}//play 5 rounds and display results after each round
+function game()
+{
     let wins=0;
     let losses=0;
     let ties=0;
-    let results=round(5);
-    if (results==='you win!') {wins++}
-    else if (results==='you lose!') {losses++}
-    else if (results==='tie game!') {ties++}
-    let score='wins:'+wins+' losses:'+losses+' ties:'+ties;
-    return score
+    for (let i=0; i<5; i++) {
+        let results=round();
+        if (results==='you win!') {wins++,alert('you win the round')}
+        else if (results==='you lose!') {losses++, alert('you lose the round')}
+        else if (results==='tie game!') {ties++, alert('you tied this round')} 
+        else if (results==='typo') {losses++, alert('typo, automatic loss')}
+        let score='wins:'+wins+' losses:'+losses+' ties:'+ties;
+        console.log(score)
+    }
+    if (wins>losses) {alert('You win!')}
+    else if(wins<losses) {alert('You Lose!')}
+    else if (wins===losses) {alert('Tie game!')}
 }
