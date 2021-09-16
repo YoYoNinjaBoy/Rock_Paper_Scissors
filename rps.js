@@ -28,10 +28,10 @@ else {return 'typo'}
 }//play 5 rounds and display results after each round
 function game()
 {
-    let wins=0;
-    let losses=0;
-    let ties=0;
-    for (let i=0; i<5; i++) {
+    let ties=0,
+        wins=0,
+        losses=0;
+    for (wins,losses; wins<3 && losses<3;) {
         let results=round();
         if (results==='you win!') {wins++,alert('Computer throws '+computerChoice+'.\nYou win this round.'+'\nwins:'+wins+' losses:'+losses+' ties:'+ties)}
         else if (results==='you lose!') {losses++, alert('Computer throws '+computerChoice+'.\nYou lose this round.'+'\nwins:'+wins+' losses:'+losses+' ties:'+ties)}
@@ -42,5 +42,5 @@ function game()
     }
     if (wins>losses) {alert('You win!')}
     else if(wins<losses) {alert('You Lose!')}
-    else if (wins===losses) {alert('Tie game!')}
+    else  {alert('uh oh')}
 }
