@@ -8,7 +8,6 @@ return computerChoice
 }//plays rps in the console type round('rock') to throw rock round('paper') for paper etc.
 function round(playerSelection, computerSelection=computerPlay()){
     playerSelection=window.prompt('type rock, paper, or scissors');
-    alert('Computer throws '+computerChoice)
 if (playerSelection.toLowerCase()==='rock' && computerSelection==='rock' ||
     playerSelection.toLowerCase()==='paper' && computerSelection==='paper' ||
     playerSelection.toLowerCase()==='scissors' && computerSelection==='scissors')
@@ -34,10 +33,10 @@ function game()
     let ties=0;
     for (let i=0; i<5; i++) {
         let results=round();
-        if (results==='you win!') {wins++,alert('you win the round')}
-        else if (results==='you lose!') {losses++, alert('you lose the round')}
-        else if (results==='tie game!') {ties++, alert('you tied this round')} 
-        else if (results==='typo') {losses++, alert('typo, automatic loss')}
+        if (results==='you win!') {wins++,alert('Computer throws '+computerChoice+'.\nYou win this round.'+'\nwins:'+wins+' losses:'+losses+' ties:'+ties)}
+        else if (results==='you lose!') {losses++, alert('Computer throws '+computerChoice+'.\nYou lose this round.'+'\nwins:'+wins+' losses:'+losses+' ties:'+ties)}
+        else if (results==='tie game!') {ties++, alert('Computer throws '+computerChoice+'.\nYou tie this round.'+'\nwins:'+wins+' losses:'+losses+' ties:'+ties)} 
+        else if (results==='typo') {losses++, alert('Computer throws '+computerChoice+'.\nTypo, automatic loss.'+'\nwins:'+wins+' losses:'+losses+' ties:'+ties)}
         let score='wins:'+wins+' losses:'+losses+' ties:'+ties;
         console.log(score)
     }
