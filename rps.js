@@ -8,6 +8,7 @@ return computerChoice
 }//plays rps in the console type round('rock') to throw rock round('paper') for paper etc.
 function round(playerSelection, computerSelection=computerPlay()){
     playerSelection=window.prompt('type rock, paper, or scissors');
+    alert('Computer throws '+computerChoice)
 if (playerSelection.toLowerCase()==='rock' && computerSelection==='rock' ||
     playerSelection.toLowerCase()==='paper' && computerSelection==='paper' ||
     playerSelection.toLowerCase()==='scissors' && computerSelection==='scissors')
