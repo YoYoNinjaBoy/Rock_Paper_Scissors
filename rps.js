@@ -1,49 +1,57 @@
-const p3=document.querySelector('#p3');
+const p1=document.querySelector('#p1');
+const p2=document.querySelector('#p2');
+const gbContainer=document.querySelector('#gameButtons');
 
 function gimmeButtons(){
-    startGameBtn.remove()
+    p5.textContent=p5.textContent.replace(p5.textContent,'');
+    p4.textContent=p4.textContent.replace(p4.textContent,'');
+    p3.textContent=p3.textContent.replace(p3.textContent,'');
+    p2.textContent=p2.textContent.replace(p2.textContent,'GOOD LUCK!');
+    p1.textContent=p1.textContent.replace(p1.textContent,'Best of 5.');
+    startGameBtn.remove();
 
-
-    const gbContainer=document.querySelector('#gameButtons');
    
     const rockBtn=document.createElement('button');
         rockBtn.innerHTML='rock';
         gbContainer.appendChild(rockBtn);
-        rockBtn.onclick=() =>
-        p3.textContent=p3.textContent.replace(p3.textContent,
-            round('rock'))
-            ;
+        rockBtn.classList.add('gameButton');
+        rockBtn.addEventListener('click',function(){round('rock')});
+                
+        
 
     const paperBtn=document.createElement('button');
         paperBtn.innerHTML='paper';
         gbContainer.appendChild(paperBtn);
-        paperBtn.onclick=() =>
-            p3.textContent=p3.textContent.replace(p3.textContent,
-            round('paper'))
-            ;
+        paperBtn.classList.add('gameButton');
+        paperBtn.addEventListener('click',function(){round('paper')});
+            
+        
 
     const scissorsBtn=document.createElement('button');
         scissorsBtn.innerHTML='scissors';
         gbContainer.appendChild(scissorsBtn);
-        const p3=document.querySelector('#p3');
-        scissorsBtn.onclick=() =>
-            p3.textContent=p3.textContent.replace(p3.textContent,
-                round('scissors'))
-                ;
+        scissorsBtn.classList.add('gameButton');
+        scissorsBtn.addEventListener('click',function(){round('scissors')})
 }
+
+let wins=0;
+let ties=0;
+let losses=0;
 
 const startGameBtn=document.querySelector('#startGame');
     startGameBtn.onclick=()=>gimmeButtons();
-//const rockBtn=document.querySelector('#rockBtn');
-  //  rockBtn.onclick=() =>round('rock');
-        ;
 
-//const paperBtn=document.querySelector('#paperBtn');
-  //  paperBtn.onclick=() =>round('paper');
-
-//const scissorsBtn=document.querySelector('#scissorsBtn');
-  //  scissorsBtn.onclick=()=>round('scissors');
-
+    const gameInfoContainer=document.querySelector('#gameInfo');
+        const p3=document.createElement('p');
+            p3.id='#p3';
+            gameInfoContainer.appendChild(p3);
+        const p4=document.createElement('p');
+            p4.id='#p4';
+            gameInfoContainer.appendChild(p4);
+        const p5=document.createElement('p');
+            p5.id='#p5';
+            gameInfoContainer.appendChild(p5);
+    
 //randomly generates rock, paper, or scissors
 function computerPlay(){
 let rng=Math.floor(Math.random() *3);
@@ -54,42 +62,78 @@ return computerChoice
 
 }
 //plays rps in the console type round('rock') to throw rock round('paper') for paper etc.
-function round(playerSelection,computerSelection=computerPlay()){
-if (playerSelection.toLowerCase()==='rock' && computerSelection==='rock' ||
-    playerSelection.toLowerCase()==='paper' && computerSelection==='paper' ||
-    playerSelection.toLowerCase()==='scissors' && computerSelection==='scissors')
-{return 'tie game!'}
+function round(playerSelection){
+    
+    
+    
+    computerSelection=computerPlay()
+    if (
+        playerSelection==='rock' && computerSelection==='rock' ||
+        playerSelection==='paper' && computerSelection==='paper' ||
+        playerSelection==='scissors' && computerSelection==='scissors')
+        {ties+=1;
+        wltMessage='You tie!';
+        }
+    
+        else if ( 
+            playerSelection==='rock' && computerSelection==='paper' ||
+            playerSelection==='paper' && computerSelection==='scissors' ||
+            playerSelection==='scissors' && computerSelection==='rock')
+            {losses+=1;
+            wltMessage='You lose!';
+            }
+        
+        else if (
+            playerSelection==='rock' && computerSelection==='scissors' ||
+            playerSelection==='paper' && computerSelection==='rock' ||
+            playerSelection==='scissors' && computerSelection==='paper')
+            {
+            wins+=1;
+            wltMessage='You win!'}
+        
 
-else if ( 
-    playerSelection.toLowerCase()==='rock' && computerSelection==='paper' ||
-    playerSelection.toLowerCase()==='paper' && computerSelection==='scissors' ||
-    playerSelection.toLowerCase()==='scissors' && computerSelection==='rock'
-    )
-    {return 'you lose!'}
+        let score='wins: '+wins+'\nLosses: '+losses+'\nTies: '+ties
+        p3.textContent=wltMessage;
+        p4.textContent=score;
 
-else if (
-    playerSelection.toLowerCase()==='rock' && computerSelection==='scissors' ||
-    playerSelection.toLowerCase()==='paper' && computerSelection==='rock' ||
-    playerSelection.toLowerCase()==='scissors' && computerSelection==='paper'
-)
-{return 'you win!'}
+        p1.textContent=p1.textContent.replace(p1.textContent, 
+                'You throw '+playerSelection)
+        p2.textContent=p2.textContent.replace(p2.textContent,
+                'Skynet throws '+computerSelection)
+            
+    if(wins===3){
+        p5.textContent='You have won the game';
 
-}//play 5 rounds and display results after each round
-function game(){
-
-    let ties=0,
-        wins=0,
-        losses=0;
-    for (wins,losses; wins<3 && losses<3;) {
-        let results=round();
-        if (results==='you win!') {wins++,alert('Computer throws '+computerChoice+'.\nYou win this round.'+'\nwins:'+wins+' losses:'+losses+' ties:'+ties)}
-        else if (results==='you lose!') {losses++, alert('Computer throws '+computerChoice+'.\nYou lose this round.'+'\nwins:'+wins+' losses:'+losses+' ties:'+ties)}
-        else if (results==='tie game!') {ties++, alert('Computer throws '+computerChoice+'.\nYou tie this round.'+'\nwins:'+wins+' losses:'+losses+' ties:'+ties)} 
-        else if (results==='typo') {losses++, alert('Computer throws '+computerChoice+'.\nTypo, automatic loss.'+'\nwins:'+wins+' losses:'+losses+' ties:'+ties)}
-        let score='wins:'+wins+' losses:'+losses+' ties:'+ties;
-        console.log(score)
+        gameOverMan();
     }
-    if (wins>losses) {alert('You win!')}
-    else if(wins<losses) {alert('You Lose!')}
-    else  {alert('uh oh, something went wrong.')}
+        
+    else if (losses===3){
+        p5.textContent='You have lost the game';
+
+        gameOverMan();
+    }
+}
+function removeElementsByClass(className){
+    const elements=document.getElementsByClassName(className);
+    while(elements.length>0){
+        elements[0].parentNode.removeChild(elements[0]);
+    }
+}
+
+function gameOverMan(){
+    wins=0;
+    losses=0;
+    ties=0;
+
+    removeElementsByClass('gameButton');
+    
+    const playAgainBtn=document.createElement('button');
+        playAgainBtn.innerHTML='play again?';
+        playAgainBtn.addEventListener('click',function(){gimmeButtons()});
+        playAgainBtn.addEventListener('click',function(){playAgainBtn.remove()});
+        gbContainer.appendChild(playAgainBtn);
+
+    
+
+    
 }
