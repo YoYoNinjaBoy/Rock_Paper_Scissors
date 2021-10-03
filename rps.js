@@ -108,7 +108,7 @@ function round(playerSelection){
     }
         
     else if (losses===3){
-        p5.textContent='You have lost the game';
+        p5.textContent='You just lost the game';
 
         gameOverMan();
     }
