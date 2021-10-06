@@ -12,7 +12,8 @@ function gimmeButtons(){
 
    
     const rockBtn=document.createElement('button');
-        rockBtn.innerHTML='rock';
+        rockBtn.innerHTML='<img src="https://img.icons8.com/ios/50/000000/rock.png"/>';
+        rockBtn.style.backgroundColor='';
         gbContainer.appendChild(rockBtn);
         rockBtn.classList.add('gameButton');
         rockBtn.addEventListener('click',function(){round('rock')});
@@ -20,7 +21,7 @@ function gimmeButtons(){
         
 
     const paperBtn=document.createElement('button');
-        paperBtn.innerHTML='paper';
+        paperBtn.innerHTML='<img src="https://img.icons8.com/dotty/80/000000/paper.png"/>';
         gbContainer.appendChild(paperBtn);
         paperBtn.classList.add('gameButton');
         paperBtn.addEventListener('click',function(){round('paper')});
@@ -28,7 +29,7 @@ function gimmeButtons(){
         
 
     const scissorsBtn=document.createElement('button');
-        scissorsBtn.innerHTML='scissors';
+        scissorsBtn.innerHTML='<img src="https://img.icons8.com/ios/50/000000/scissors.png"/>';
         gbContainer.appendChild(scissorsBtn);
         scissorsBtn.classList.add('gameButton');
         scissorsBtn.addEventListener('click',function(){round('scissors')})
@@ -102,13 +103,14 @@ function round(playerSelection){
                 'Skynet throws '+computerSelection)
             
     if(wins===3){
-        p5.textContent='You have won the game';
+        p5.textContent='Sarah Connor is saved';
+        
 
         gameOverMan();
     }
         
     else if (losses===3){
-        p5.textContent='You just lost the game';
+        p5.textContent='Skynet has enslaved humanity';
 
         gameOverMan();
     }
@@ -128,7 +130,8 @@ function gameOverMan(){
     removeElementsByClass('gameButton');
     
     const playAgainBtn=document.createElement('button');
-        playAgainBtn.innerHTML='play again?';
+        playAgainBtn.innerHTML='Play again?';
+        playAgainBtn.classList.add('startAndAgain');
         playAgainBtn.addEventListener('click',function(){gimmeButtons()});
         playAgainBtn.addEventListener('click',function(){playAgainBtn.remove()});
         gbContainer.appendChild(playAgainBtn);

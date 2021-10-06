@@ -1,0 +1,46 @@
+body{
+    background-color:black;
+}
+p{
+    text-align:center;
+    color:white;
+}
+#gameButtons{
+    display:flex;
+    padding-top:50px;
+    padding-bottom:75px;
+    margin-left:200px;
+    margin-right:200px;
+}
+.gameButton{
+    display:box;
+    height:150px;
+    width:auto;
+    padding-left:5px;
+    padding-right:5px;
+    margin-left:auto;
+    margin-right:auto;
+    border:black 1px solid;
+    border-radius:50px;
+    background-color:grey;
+    aspect-ratio: 1;
+}
+.gameButton:hover{
+    border:yellow 1px solid;
+}
+.startAndAgain{
+    display:inline-block;
+    margin-left:auto;
+    margin-right:auto;
+    height:50px;
+    width:200px;
+    text-align:center;
+    font-size:32px;
+    border:1px grey solid;
+    border-radius:10px;
+    background-color:black;
+    color:white;
+}
+.startAndAgain:hover{
+    border:2px yellow solid;
+}
