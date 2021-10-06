@@ -4,17 +4,19 @@ body{
 p{
     text-align:center;
     color:white;
+    font-size:28px;
 }
 #gameButtons{
     display:flex;
     padding-top:50px;
     padding-bottom:75px;
-    margin-left:200px;
-    margin-right:200px;
+    margin-left:auto;
+    margin-right:auto;
+    max-width:1000px;
 }
 .gameButton{
     display:box;
-    height:150px;
+    height:200px;
     width:auto;
     padding-left:5px;
     padding-right:5px;
@@ -23,7 +25,7 @@ p{
     border:black 1px solid;
     border-radius:50px;
     background-color:grey;
-    aspect-ratio: 1;
+    aspect-ratio:1;
 }
 .gameButton:hover{
     border:yellow 1px solid;
