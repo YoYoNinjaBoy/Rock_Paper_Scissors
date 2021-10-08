@@ -46,3 +46,10 @@ p{
 .startAndAgain:hover{
     border:2px yellow solid;
 }
+.endImage{
+    display:flex;
+    margin-left:auto;
+    margin-right:auto;
+    padding-top:10px;
+    max-height:500px;
+}
